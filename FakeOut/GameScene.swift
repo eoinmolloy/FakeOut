@@ -10,9 +10,13 @@ import SpriteKit
 
 let ballName = "ball"
 let paddleName = "paddle"
+let paddleNameL = "paddleL"
+let paddleNameR = "paddleR"
 let blockName = "block"
 let blockNodeName = "blockNode"
 var isFingerOnPaddle = false
+var isFingerOnPaddleR = false
+var isFingerOnPaddleL = false
 
 
 class GameScene: SKScene {
@@ -25,9 +29,17 @@ class GameScene: SKScene {
             if body.node!.name == paddleName {
                 print("Began touch on paddle")
                 isFingerOnPaddle = true
+            } else if body.node!.name == paddleNameL {
+                print("Began touch on paddleL")
+                isFingerOnPaddleL = true
+            } else if body.node!.name == paddleNameR {
+                print("Began touch on paddleR")
+                isFingerOnPaddleR = true
             }
+                
         }
     }
+    
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         // 1. Check whether user touched the paddle
@@ -50,9 +62,32 @@ class GameScene: SKScene {
             // 6. Update paddle position
             paddle.position = CGPointMake(paddleX, paddle.position.y)
         }
+        /*
+        else if isFingerOnPaddleL {
+            // 2. Get touch location
+            var touch = touches.first as UITouch!
+            var touchLocation = touch.locationInNode(self)
+            var previousLocation = touch.previousLocationInNode(self)
+            
+            // 3. Get node for paddle
+            var paddle = childNodeWithName(paddleNameL) as! SKSpriteNode
+            
+            // 4. Calculate new position along x for paddle
+            var paddleY = paddle.position.y + (touchLocation.y + previousLocation.y)
+            
+            // 5. Limit x so that paddle won't leave screen to left or right
+            paddleY = max(paddleY, paddle.size.height/2)
+            paddleY = min(paddleY, size.height - paddle.size.height/2)
+            
+            // 6. Update paddle position
+            paddle.position = CGPointMake(paddleY, paddle.position.x)
+        }
+*/
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        isFingerOnPaddle = false
+        isFingerOnPaddleL = false
         isFingerOnPaddle = false
     }
     

@@ -20,6 +20,11 @@ let BottomCategory : UInt32 = 0x1 << 1 // 00000000000000000000000000000010
 let BlockCategory  : UInt32 = 0x1 << 2 // 00000000000000000000000000000100
 let PaddleCategory : UInt32 = 0x1 << 3 // 00000000000000000000000000001000
 
+/*
+*   @Notes - There are mulitple problems in the game which inhibit me from further improving the overall quality of the game, the ball gradulally slows down to a stop
+*         after a certain amount of collions have occured making it hard to even test my win conditions, also the runtime error still persists after you click game
+*         over screen. In terms of resources used Some of the basic design and game logic came from ray weinderlichs tutorial, game assets came from a tutorial youtube video referenced here https://www.youtube.com/watch?v=Cgo7LCLy0mg , and the icon came from this link http://surfingbird.ru/surf/cFIMb16b6
+*/
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -29,7 +34,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if let body = physicsWorld.bodyAtPoint(touchLocation) {
             if body.node!.name == paddleName {
-                print("Began touch on paddle")
                 isFingerOnPaddle = true
             }
         }
@@ -40,22 +44,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
        
         if isFingerOnPaddle {
-            // 2. Get touch location
+            
             let touch = touches.first as UITouch!
-            var touchLocation = touch.locationInNode(self)
-            var previousLocation = touch.previousLocationInNode(self)
+            let touchLocation = touch.locationInNode(self)
+            let previousLocation = touch.previousLocationInNode(self)
             
-            // 3. Get node for paddle
-            var paddle = childNodeWithName(paddleName) as! SKSpriteNode
+            //Cretes reference to the color sprite creted on sks file
+            let paddle = childNodeWithName(paddleName) as! SKSpriteNode
             
-            // 4. Calculate new position along x for paddle
+            
             var paddleX = paddle.position.x + (touchLocation.x - previousLocation.x)
             
-            // 5. Limit x so that paddle won't leave screen to left or right
+            //Clamping the paddle to the screeen
             paddleX = max(paddleX, paddle.size.width/2)
             paddleX = min(paddleX, size.width - paddle.size.width/2)
             
-            // 6. Update paddle position
+            //updates the position
             paddle.position = CGPointMake(paddleX, paddle.position.y)
         }
     }
@@ -69,21 +73,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //you create a border around the screen, this has no volume or mass and has a friction of 0
         let border = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        print("game running")
         border.friction = 0
         self.physicsBody = border
         //Gravity is removed and a force is applied to the ball
-        
         physicsWorld.gravity = CGVectorMake(0, 0.0)
-        //This is where I have the runtime
+        //This is where I have the runtime error, still no closer to an answer.
+        //Origionally I had this implemented on the sks file but was too inconsistent so hard coded instead
         let ball = childNodeWithName(ballName) as! SKSpriteNode
-        ball.physicsBody!.applyImpulse(CGVectorMake(-1, 1))
+        ball.physicsBody!.applyImpulse(CGVectorMake(10, 10))
         ball.physicsBody!.allowsRotation = false
         ball.physicsBody!.friction = 0
         ball.physicsBody!.restitution = 1
         ball.physicsBody!.linearDamping = 0
         ball.physicsBody!.angularDamping = 0
+    
         
+        //Draws a boundary rectangle at the bottom used for killing the player.
         let bottomRect = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 1)
         let bottom = SKNode()
         bottom.physicsBody = SKPhysicsBody(edgeLoopFromRect: bottomRect)
@@ -99,6 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         
+        //draws the bricks using a for loop and switch statement for adding extra rows
         let numberOfRows = 2
         let numberOfBricks = 6
         let brickWidth = SKSpriteNode(imageNamed: "brick").size.width
@@ -172,21 +178,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.view?.presentScene(gameOverScene)
             }
         }
-    
-    override func update(currentTime: NSTimeInterval) {
-        let ball = self.childNodeWithName(ballName) as! SKSpriteNode
-        
-        let maxSpeed: CGFloat = 1000.0
-        let speed = sqrt(ball.physicsBody!.velocity.dx * ball.physicsBody!.velocity.dx + ball.physicsBody!.velocity.dy * ball.physicsBody!.velocity.dy)
-        
-        if speed > maxSpeed {
-            ball.physicsBody!.linearDamping = 0.4
-        }
-        else {
-            ball.physicsBody!.linearDamping = 0.0
-        }
-    }
-    
+   
+    // function to see win conditions
 
     func isGameWon() ->Bool {
         var numberOfBricks = 0

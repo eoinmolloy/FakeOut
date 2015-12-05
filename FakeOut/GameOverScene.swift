@@ -12,10 +12,7 @@ import SpriteKit
 class GameOverScene : SKScene {
     init(size: CGSize, playerWon: Bool) {
         super.init(size: size)
-        let backGround = SKSpriteNode(imageNamed: "bg")
-        backGround.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        
-        self.addChild(backGround)
+    
         
         let gameOverLabel = SKLabelNode(fontNamed: "Anenir-Black")
         gameOverLabel.fontSize = 46

@@ -13,15 +13,64 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FakeOut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlj-6O-OVI">
+                                <rect key="frame" x="163" y="151" width="181" height="64"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="27"/>
+                                <color key="textColor" red="0.93043718434343436" green="0.93043718434343436" blue="0.93043718434343436" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="dWn-yG-itl">
+                                <rect key="frame" x="113" y="119" width="83" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="hms-3g-XD0">
+                                <rect key="frame" x="212" y="119" width="82" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" highlightedImage="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="H0F-oi-ajW">
+                                <rect key="frame" x="313" y="119" width="81" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="5LR-Dm-3lL">
+                                <rect key="frame" x="113" y="213" width="83" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="LUm-ZE-Imm">
+                                <rect key="frame" x="211" y="213" width="82" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" highlightedImage="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="Orf-WT-zgK">
+                                <rect key="frame" x="313" y="213" width="81" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="emc-XR-AiZ">
+                                <rect key="frame" x="113" y="255" width="83" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="tBK-Gt-oMn">
+                                <rect key="frame" x="211" y="255" width="82" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-Rm-JBn">
+                                <rect key="frame" x="113" y="77" width="83" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y41-hl-tI8">
+                                <rect key="frame" x="212" y="77" width="82" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" highlightedImage="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="gvW-Q0-D2l">
+                                <rect key="frame" x="313" y="77" width="81" height="24"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brick.png" highlightedImage="brick.png" translatesAutoresizingMaskIntoConstraints="NO" id="mQF-D3-HCX">
+                                <rect key="frame" x="313" y="255" width="81" height="24"/>
+                            </imageView>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="brick.png" width="80" height="24"/>
+    </resources>
 </document>

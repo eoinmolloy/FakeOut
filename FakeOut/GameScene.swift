@@ -80,7 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //This is where I have the runtime error, still no closer to an answer.
         //Origionally I had this implemented on the sks file but was too inconsistent so hard coded instead
         let ball = childNodeWithName(ballName) as! SKSpriteNode
-        ball.physicsBody!.applyImpulse(CGVectorMake(10, 10))
+        ball.physicsBody!.applyImpulse(CGVectorMake(-10, -10))
         ball.physicsBody!.allowsRotation = false
         ball.physicsBody!.friction = 0
         ball.physicsBody!.restitution = 1
@@ -175,6 +175,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == BottomCategory {
             print("lose")
             let gameOverScene = GameOverScene(size: self.frame.size, playerWon: false)
+            self.removeAllChildren()
+            self.removeAllActions()
             self.view?.presentScene(gameOverScene)
             }
         }
